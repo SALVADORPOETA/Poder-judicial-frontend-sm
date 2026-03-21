@@ -41,7 +41,7 @@ Este no es un proyecto de tutorial ni una plantilla genérica. Es una **herramie
 | **HTTP Client** | Fetch API |
 | **Animaciones** | Tailwind Animate |
 | **Estado** | React Hooks (useState, useEffect, useMemo) |
-| **Deployment** | Vercel / Netlify |
+| **Deployment** | Vercel |
 
 ---
 
