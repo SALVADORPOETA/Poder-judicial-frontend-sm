@@ -1,46 +1,48 @@
-# Poder Judicial - Scraping & Mensajería
+# PJF Data & Messaging Suite
 
-**Poder Judicial - Scraping & Mensajería** es una plataforma avanzada de automatización y gestión de datos diseñada específicamente para el ecosistema del **Poder Judicial de la Federación**. Este proyecto frontend, construido desde cero con **React 18** y **TailwindCSS**, permite a los usuarios realizar scrapings profundos de perfiles judiciales, procesar bases de datos con inteligencia de género y gestionar campañas de mensajería personalizada a través de Email y WhatsApp.
+**PJF Data & Messaging Suite** is an advanced automation and data management platform specifically designed for the **Federal Judiciary (Poder Judicial de la Federación)** ecosystem. This frontend project, built from scratch with **React 18** and **TailwindCSS**, allows users to perform deep scraping of judicial profiles, process databases with gender intelligence, and manage personalized messaging campaigns via Email and WhatsApp.
 
-La aplicación es **completamente interactiva**: puedes cargar archivos JSON, editar plantillas en tiempo real con detección de variables y gestionar candidatos mediante una interfaz táctil y moderna que prioriza la eficiencia operativa.
+The application is **fully interactive**: you can upload JSON files, edit templates in real-time with variable detection, and manage candidates through a modern, tactile interface that prioritizes operational efficiency.
 
 ---
 
 ## ✨ Overview
 
-Este no es un proyecto de tutorial ni una plantilla genérica. Es una **herramienta de ingeniería de datos** personalizada que combina:
+This is not a tutorial project or a generic template. It is a **custom data engineering tool** that combines:
 
-* **Extracción de Datos en Dos Etapas:** Interfaz para scraping de enlaces y recolección de detalles profundos.
-* **Procesamiento Inteligente:** Algoritmos de limpieza de nombres y detección automática de género para personalización.
-* **Editor de Mensajería Omnicanal:** Switch dinámico entre modos de Email (púrpura) y WhatsApp (verde) con cambio de contexto visual.
-* **Arquitectura de Datos Robusta:** Manejo de Blobs para exportación a Excel y JSON sin pérdida de integridad.
-* **UI/UX de Alta Precisión:** Diseño en modo oscuro inspirado en herramientas de desarrollo, optimizado para largas jornadas de trabajo.
+* **Two-Stage Data Extraction:** Interface for link scraping and deep detail collection.
+* **Intelligent Processing:** Name cleaning algorithms and automatic gender detection for high-level personalization.
+* **Omnichannel Messaging Editor:** Dynamic switching between Email (purple) and WhatsApp (green) modes with visual context changes.
+* **Robust Data Architecture:** Blob handling for Excel and JSON export without loss of integrity.
+* **High-Precision UI/UX:** Dark mode design inspired by developer tools, optimized for long work sessions.
+
+
 
 ---
 
 ## 🚀 Features
 
-* ✨ **Dashboard Interactivo:** Gestión centralizada de todas las fases del proyecto.
-* 🔍 **Scrapers Integrados:** Interfaz para disparar búsquedas de ministros, magistrados y jueces.
-* 📊 **Generador de Reportes:** Conversión dinámica de resultados JSON a archivos Excel (.xlsx).
-* 📥 **Data Dropzone:** Área de carga de archivos con feedback visual de estado y validación de tipos.
-* ✍️ **Personalización Granular:** Modales específicos para editar mensajes individuales antes del envío.
-* 🏷️ **Sistema de Tags Dinámicos:** Uso de variables como `[nombre]`, `{o|a}`, y `{El|La}` para una comunicación humana.
-* 📱 **Diseño Responsive:** Optimizado para escritorio y tablets con TailwindCSS.
-* 🎨 **Feedback de Estado:** Spinners de carga, indicadores de éxito y alertas de error animadas.
+* ✨ **Interactive Dashboard:** Centralized management of all project phases.
+* 🔍 **Integrated Scrapers:** Interface to trigger searches for ministers, magistrates, and judges.
+* 📊 **Report Generator:** Dynamic conversion of JSON results to Excel files (.xlsx).
+* 📥 **Data Dropzone:** File upload area with visual status feedback and type validation.
+* ✍️ **Granular Personalization:** Specific modals to edit individual messages before sending.
+* 🏷️ **Dynamic Tag System:** Use of variables such as `[nombre]`, `{o|a}`, and `{El|La}` for human-like communication.
+* 📱 **Responsive Design:** Optimized for desktop and tablets using TailwindCSS.
+* 🎨 **Status Feedback:** Loading spinners, success indicators, and animated error alerts.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Categoría | Tecnología |
+| Category | Technology |
 | :--- | :--- |
 | **Framework** | React 18 (Vite) |
 | **Styling** | TailwindCSS |
-| **Iconografía** | Lucide React |
+| **Iconography** | Lucide React |
 | **HTTP Client** | Fetch API |
-| **Animaciones** | Tailwind Animate |
-| **Estado** | React Hooks (useState, useEffect, useMemo) |
+| **Animations** | Tailwind Animate |
+| **State Management** | React Hooks (useState, useEffect, useMemo) |
 | **Deployment** | Vercel |
 
 ---
@@ -50,27 +52,27 @@ Este no es un proyecto de tutorial ni una plantilla genérica. Es una **herramie
 ### Prerequisites
 
 * Node.js 18+
-* npm o yarn
-* Backend API activa (ver repositorio de backend)
+* npm or yarn
+* Active Backend API (see backend repository)
 
 ### Installation
 
 ```bash
-# Clonar el repositorio
+# Clone the repository
 git clone https://github.com/SALVADORPOETA/Poder-judicial-frontend-sm.git
 
-# Navegar al directorio
+# Navigate into the project directory
 cd poder-judicial-frontend-sm
 
-# Instalar dependencias
+# Install dependencies
 npm install
 ```
 
 ### Environment Variables
 
-Crea un archivo `.env` en la raíz con la URL de tu API:
+Create a `.env` file in the root directory with your API URL:
 ```env
-VITE_API_URL=https://tu-api-backend.com
+VITE_API_URL=https://your-backend-api.com
 ```
 
 ### Development Server
@@ -79,17 +81,17 @@ VITE_API_URL=https://tu-api-backend.com
 npm run dev
 ```
 
-La aplicación estará disponible en `http://localhost:5173`.
+The application will be available at: `http://localhost:5173`.
 
 ---
 
 ## ⚙️ Usage
 
-1.  **Extraer:** Selecciona una lista del PJF (ej. Magistrados de Circuito) y descarga los enlaces encontrados.
-2.  **Procesar:** Sube el JSON de enlaces al "Detail Scraper" para obtener perfiles completos con correo y teléfono.
-3.  **Configurar:** En el Servicio de Mensajería, define tu plantilla usando los tags de género y nombre.
-4.  **Revisar:** Haz clic en cualquier candidato de la tabla para abrir el modal de personalización final.
-5.  **Enviar:** Alterna entre modo WhatsApp o Email y dispara la comunicación masiva.
+1.  **Extract:** Select a PJF list (e.g., Circuit Magistrates) and download the found links.
+2.  **Process:** Upload the links JSON to the "Detail Scraper" to obtain complete profiles with email and phone numbers.
+3.  **Configure:** In the Messaging Service, define your template using gender and name tags.
+4.  **Review:** Click on any candidate in the table to open the final personalization modal.
+5.  **Send:** Toggle between WhatsApp or Email mode and trigger the bulk communication.
 
 
 
@@ -101,15 +103,15 @@ La aplicación estará disponible en `http://localhost:5173`.
 frontend/
 ├─ src/
 │  ├─ components/
-│  │  ├─ LinkScraper.jsx      # Fase 1: Extracción de URLs
-│  │  ├─ DetailScraper.jsx    # Fase 2: Scraping Profundo
-│  │  ├─ DataDropzone.jsx     # Ingesta de archivos
-│  │  ├─ TemplateEditor.jsx   # Editor de plantillas dinámicas
-│  │  ├─ CandidatesTable.jsx  # Gestión de base de datos
-│  │  ├─ MessageModal.jsx     # Edición fina de Email
-│  │  └─ WhatsAppModal.jsx    # Edición fina de WhatsApp
-│  ├─ apiConfig.js            # Configuración de endpoints
-│  ├─ App.jsx                 # Enrutador y Layout principal
+│  │  ├─ LinkScraper.jsx      # Phase 1: URL Extraction
+│  │  ├─ DetailScraper.jsx    # Phase 2: Deep Scraping
+│  │  ├─ DataDropzone.jsx     # File Ingestion
+│  │  ├─ TemplateEditor.jsx   # Dynamic Template Editor
+│  │  ├─ CandidatesTable.jsx  # Database Management
+│  │  ├─ MessageModal.jsx     # Email Fine-tuning
+│  │  └─ WhatsAppModal.jsx    # WhatsApp Fine-tuning
+│  ├─ apiConfig.js            # Endpoints Configuration
+│  ├─ App.jsx                 # Router and Main Layout
 │  └─ main.jsx
 ├─ public/
 ├─ tailwind.config.js
@@ -120,19 +122,19 @@ frontend/
 
 ## 🎨 UI & UX Design
 
-* **Identidad Visual por Canal:** El sistema cambia automáticamente a verde para WhatsApp y púrpura para Email para prevenir errores humanos.
-* **Modales de Edición:** Diseño limpio con tipografía `monospace` para facilitar la revisión de textos técnicos.
-* **Interactividad Táctil:** Botones con estados de *hover* mejorados y transiciones suaves.
-* **Accesibilidad:** Uso de labels semánticos y contrastes altos para entornos profesionales.
+* **Channel Visual Identity:** The system automatically switches to green for WhatsApp and purple for Email to prevent human error.
+* **Editing Modals:** Clean design with `monospace` typography to facilitate the review of technical texts.
+* **Tactile Interactivity:** Buttons with enhanced hover states and smooth transitions.
+* **Accessibility:** Use of semantic labels and high contrast for professional environments.
 
 ---
 
 ## 📌 Originality Statement
 
-Este proyecto es **100% original**.
-* No se usaron plantillas de administración pre-hechas.
-* La lógica de procesamiento de nombres y género fue desarrollada de forma independiente.
-* Toda la arquitectura de componentes y el flujo de scraping-a-mensajería fue diseñado para resolver una necesidad real del sector legal.
+This project is **100% original**.
+* No pre-made admin templates were used.
+* Name and gender processing logic was independently developed.
+* The entire component architecture and scraping-to-messaging flow was designed to solve a real need in the legal sector.
 
 ---
 
@@ -148,13 +150,17 @@ Este proyecto es **100% original**.
 
 ## ⚖️ License
 
-Este es un proyecto de portafolio creado por **Salvador Martínez**.
-Uso comercial no autorizado sin consentimiento previo.
-Todos los derechos reservados.
+This is a portfolio project created by **Salvador Martínez**.
+No commercial use intended without prior consent.
+All rights reserved to the author.
 
 ---
 
 ## 💡 Notes
 
-* Diseñado para optimizar flujos de trabajo en el Poder Judicial.
-* El frontend demuestra habilidades avanzadas en manejo de estados complejos y diseño de UI para herramientas de productividad.
+* Designed to optimize workflows within the Federal Judiciary.
+* The frontend demonstrates advanced skills in managing complex states and designing UI for productivity tools.
+
+---
+
+**Would you like me to help you translate the Backend README as well, or should we move on to the next feature of the app?**
