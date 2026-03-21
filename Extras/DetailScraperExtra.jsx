@@ -1,34 +1,29 @@
 import React, { useState } from 'react'
 import { FileJson, CheckCircle, FileSpreadsheet } from 'lucide-react'
-import { API_URL } from '../apiConfig'
 
 const DetailScraper = () => {
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState('idle')
   const [message, setMessage] = useState('')
-  const [downloadUrl, setDownloadUrl] = useState(null)
-  const [results, setResults] = useState(null)
+  // Ahora guardamos los datos en lugar de la URL
+  const [scrapedData, setScrapedData] = useState(null)
+
+  const API_URL =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:3001'
+      : 'https://poder-judicial-backend-sm.vercel.app'
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0]
     if (selectedFile && selectedFile.type === 'application/json') {
       setFile(selectedFile)
       setStatus('idle')
-      setDownloadUrl(null)
+      setScrapedData(null)
     } else {
       alert('Por favor, sube un archivo JSON válido')
     }
   }
-
-  const getCleanId = () => {
-    if (!file) return 'extraida'
-    // Regex: busca "lista_" seguido de números. Ignora lo que haya después (como espacios o paréntesis)
-    const match = file.name.match(/lista_(\d+)/)
-    return match ? match[1] : 'extraida'
-  }
-
-  const cleanId = getCleanId()
 
   const handleStartDetailScraping = async (e) => {
     e.preventDefault()
@@ -36,40 +31,26 @@ const DetailScraper = () => {
 
     setLoading(true)
     setStatus('loading')
+    setScrapedData(null)
+
+    const formData = new FormData()
+    formData.append('enlacesJson', file)
 
     try {
-      // 1. LEER EL ARCHIVO LOCALMENTE
-      const text = await file.text() // Convierte el archivo seleccionado a texto
-      const listaDeEnlaces = JSON.parse(text) // Lo convierte en un Array de verdad
-
-      // 2. ENVIAR COMO JSON (No como FormData)
       const response = await fetch(`${API_URL}/api/scrape-details`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // <--- IMPORTANTE
-        },
-        body: JSON.stringify({ enlaces: listaDeEnlaces }), // <--- Enviamos el objeto que el Back espera
+        body: formData,
       })
 
-      const data = await response.json()
+      const result = await response.json()
 
       if (response.ok) {
         setStatus('success')
-        setMessage(`¡Éxito! ${data.total} perfiles procesados`)
-
-        // 1. Guardamos los resultados en el estado
-        setResults(data.data)
-
-        // 2. Creamos un link temporal para el botón "Descargar JSON" si el usuario lo quiere
-        const jsonBlob = new Blob([JSON.stringify(data.data, null, 2)], {
-          type: 'application/json',
-        })
-        if (downloadUrl) {
-          URL.revokeObjectURL(downloadUrl) // Limpia el link anterior para liberar RAM
-        }
-        setDownloadUrl(URL.createObjectURL(jsonBlob))
+        setMessage(`¡Éxito! ${result.total} perfiles procesados`)
+        // Guardamos los datos recibidos (el array de resultados)
+        setScrapedData(result.data)
       } else {
-        throw new Error(data.error || 'Error en el servidor')
+        throw new Error(result.error || 'Error en el servidor')
       }
     } catch (error) {
       console.error(error)
@@ -80,17 +61,31 @@ const DetailScraper = () => {
     }
   }
 
-  const handleGenerateExcel = async () => {
-    if (!results) return
+  // Función para descargar el JSON desde la RAM del navegador
+  const descargarJsonLocal = () => {
+    if (!scrapedData) return
+    const blob = new Blob([JSON.stringify(scrapedData, null, 2)], {
+      type: 'application/json',
+    })
+    const url = window.URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `detalles_extraidos_${new Date().getTime()}.json`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    window.URL.revokeObjectURL(url)
+  }
 
-    // Usamos nuestra función unificada para sacar el ID
-    const cleanId = getCleanId()
+  const handleGenerateExcel = async () => {
+    if (!scrapedData) return
 
     try {
+      // Enviamos los datos actuales para que el backend genere el Excel al vuelo
       const response = await fetch(`${API_URL}/api/generate-excel`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ datos: results, id: cleanId }),
+        body: JSON.stringify({ datos: scrapedData }),
       })
 
       if (response.ok) {
@@ -98,8 +93,7 @@ const DetailScraper = () => {
         const url = window.URL.createObjectURL(blob)
         const a = document.createElement('a')
         a.href = url
-        // Nombre unificado: reporte_detalles_lista_X.xlsx
-        a.download = `reporte_detalles_lista_${cleanId}.xlsx`
+        a.download = `reporte_poder_judicial.xlsx`
         document.body.appendChild(a)
         a.click()
         window.URL.revokeObjectURL(url)
@@ -108,19 +102,17 @@ const DetailScraper = () => {
       }
     } catch (err) {
       console.error(err)
-      alert('Error de conexión')
+      alert('Error de conexión con el servidor')
     }
   }
 
   return (
-    // <div className="space-y-6 bg-gray-800/50 p-6 rounded-xl border border-gray-700 max-w-md mx-auto shadow-xl">
     <div className="space-y-6 bg-gray-800/50 p-6 rounded-xl border border-gray-700 w-full shadow-xl h-full">
       <h2 className="text-xl font-semibold text-blue-300">
         Extracción de Detalles
       </h2>
 
       <div className="space-y-4">
-        {/* Dropzone de archivo */}
         <div className="relative border-2 border-dashed border-gray-600 rounded-lg p-6 text-center hover:border-blue-500 transition-colors group">
           <input
             type="file"
@@ -142,7 +134,6 @@ const DetailScraper = () => {
             </p>
           </div>
         </div>
-        {/* Botón de Acción unificado */}
         <button
           onClick={handleStartDetailScraping}
           disabled={loading || !file}
@@ -155,7 +146,6 @@ const DetailScraper = () => {
             backgroundColor: loading || !file ? '#374151' : '#1a1a1a',
             border: '1px solid transparent',
             color: loading || !file ? '#9ca3af' : 'white',
-            // ESTO fuerzan el cursor: si no hay archivo o está cargando, usa 'default' (flecha)
             cursor: loading || !file ? 'default' : 'pointer',
           }}
           onMouseOver={(e) => {
@@ -197,24 +187,20 @@ const DetailScraper = () => {
         </button>
       </div>
 
-      {/* Caja de Éxito y Acciones Finales */}
-      {status === 'success' && results && (
+      {status === 'success' && scrapedData && (
         <div className="bg-blue-900/20 border border-blue-500/50 p-6 rounded-lg flex flex-col items-center gap-4 animate-in fade-in zoom-in duration-300">
           <div className="text-blue-400 font-bold text-sm flex items-center gap-2 mb-2">
             <CheckCircle size={18} /> {message}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-            {/* Botón Descargar JSON: Texto pequeño para evitar doble línea */}
-            <a
-              href={downloadUrl}
-              download={`detalles_lista_${cleanId}.json`}
+            <button
+              onClick={descargarJsonLocal}
               className="flex-1 py-2 px-4 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 text-white shadow-lg"
               style={{
                 backgroundColor: '#1a1a1a',
                 border: '1px solid transparent',
                 color: 'white',
-                textDecoration: 'none',
               }}
               onMouseOver={(e) =>
                 (e.currentTarget.style.borderColor = '#646cff')
@@ -225,12 +211,11 @@ const DetailScraper = () => {
             >
               <FileJson size={14} />
               Descargar JSON
-            </a>
-            {/* Botón Generar Excel: Corregido el borde de enfoque */}
+            </button>
             <button
               onClick={(e) => {
                 handleGenerateExcel()
-                e.currentTarget.blur() // Quita el foco inmediatamente para eliminar el borde blanco
+                e.currentTarget.blur()
               }}
               className="flex-1 py-2 px-4 rounded-lg font-bold text-xs transition-all flex items-center justify-center gap-2 text-white shadow-lg outline-none focus:ring-0"
               style={{

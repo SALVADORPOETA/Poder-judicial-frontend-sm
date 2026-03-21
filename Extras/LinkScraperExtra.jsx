@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { CheckCircle, Download } from 'lucide-react'
-import { API_URL } from '../apiConfig'
+import { CheckCircle } from 'lucide-react'
 
 const LinkScraper = () => {
   const LISTAS_OPCIONES = [
@@ -16,7 +15,7 @@ const LinkScraper = () => {
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState('idle')
   const [message, setMessage] = useState('')
-  const [linksData, setLinksData] = useState(null)
+  const [downloadUrl, setDownloadUrl] = useState(null)
 
   const handleStartScraping = async (e) => {
     e.preventDefault()
@@ -24,23 +23,23 @@ const LinkScraper = () => {
 
     setLoading(true)
     setStatus('loading')
-    setLinksData(null)
+    setDownloadUrl(null)
 
     try {
-      const response = await fetch(`${API_URL}/api/start-scraping`, {
+      const response = await fetch('http://localhost:3001/api/start-scraping', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: listId }),
       })
 
-      const result = await response.json()
+      const data = await response.json()
 
       if (response.ok) {
         setStatus('success')
-        setMessage(`¡Éxito! ${result.total} URLs encontradas`)
-        setLinksData(result.data) // Guardamos el array de perfiles
+        setMessage(`¡Éxito! ${data.total} URLs encontradas`)
+        setDownloadUrl(data.downloadUrl)
       } else {
-        throw new Error(result.error || 'Error en el servidor')
+        throw new Error(data.error || 'Error en el servidor')
       }
     } catch (error) {
       setStatus('error')
@@ -50,22 +49,8 @@ const LinkScraper = () => {
     }
   }
 
-  const descargarJsonLocal = () => {
-    if (!linksData) return
-    const blob = new Blob([JSON.stringify(linksData, null, 2)], {
-      type: 'application/json',
-    })
-    const url = window.URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = `enlaces_lista_${listId}.json`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    window.URL.revokeObjectURL(url)
-  }
-
   return (
+    // <div className="space-y-6 bg-gray-800/50 p-6 rounded-xl border border-gray-700 max-w-md mx-auto shadow-xl">
     <div className="space-y-6 bg-gray-800/50 p-6 rounded-xl border border-gray-700 w-full shadow-xl h-full">
       <h2 className="text-xl font-semibold text-blue-300">
         Extracción de URLs
@@ -88,7 +73,8 @@ const LinkScraper = () => {
               </option>
             ))}
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 group-hover:text-blue-400">
+
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 group-hover:text-blue-400 transition-colors">
             <svg
               className="fill-current h-4 w-4"
               xmlns="http://www.w3.org/2000/svg"
@@ -111,9 +97,11 @@ const LinkScraper = () => {
             backgroundColor: loading || !listId ? '#374151' : '#1a1a1a',
             border: '1px solid transparent',
             color: loading || !listId ? '#9ca3af' : 'white',
+            // Control total del cursor desde el estilo
             cursor: loading || !listId ? 'default' : 'pointer',
           }}
           onMouseOver={(e) => {
+            // Solo activa el borde azul si hay una lista seleccionada Y no está cargando
             if (!loading && listId) {
               e.currentTarget.style.borderColor = '#646cff'
             }
@@ -152,19 +140,54 @@ const LinkScraper = () => {
         </button>
       </form>
 
-      {/* REVISIÓN AQUÍ: Usamos linksData para condicionar la vista */}
-      {status === 'success' && linksData && (
+      {/* Caja de Éxito y Botón de Descarga RESTAURADO */}
+      {status === 'success' && downloadUrl && (
         <div className="bg-blue-900/20 border border-blue-500/50 p-6 rounded-lg flex flex-col items-center gap-4 animate-in fade-in zoom-in duration-300">
           <div className="text-blue-400 font-bold text-sm flex items-center gap-2 mb-2">
             <CheckCircle size={18} /> {message}
           </div>
-          <button
-            onClick={descargarJsonLocal}
-            className="w-3/4 py-2 bg-[#1a1a1a] text-white rounded-lg border border-transparent hover:border-[#646cff]! flex items-center justify-center gap-2 transition-all! font-medium"
+          <a
+            href={downloadUrl}
+            download={`enlaces_lista_${listId}.json`}
+            style={{
+              borderRadius: '8px',
+              border: '1px solid transparent',
+              padding: '0.6em 1.2em',
+              fontSize: '1em',
+              fontWeight: '500',
+              backgroundColor: '#1a1a1a', // Fondo original
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              transition: 'border-color 0.25s',
+              color: 'white', // Texto blanco como estaba
+              width: '60%',
+              margin: '0 auto',
+              textDecoration: 'none',
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.borderColor = '#646cff')}
+            onMouseOut={(e) =>
+              (e.currentTarget.style.borderColor = 'transparent')
+            }
           >
-            <Download size={18} />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
             Descargar JSON
-          </button>
+          </a>
         </div>
       )}
     </div>

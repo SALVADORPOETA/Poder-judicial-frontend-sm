@@ -1,13 +1,23 @@
 import React from 'react'
 import { Copy, X, ClipboardType } from 'lucide-react'
 
+// AQUÍ PEGAS TU TEXTO PLANO (MOCK DATA)
+const MOCK_DATA_TEXT = `¡Hola, estimad{o|a} [nombre]! ¿Vas a a dejar pasar esta oportunidad?
+
+¡Hola, [nombre]! Como {el|la} buen{a} abogad{o|a} que eres, sabes lo importante que es cuidar de tu imagen. Por eso hoy te vengo a invitar a un webinar para que platiquemos al respecto. ¿Te interesa? Solo tienes que responder este mensaje con un "Me interesa" y te mando el boleto. {El|La} buen{a} abogad{o|a} que eres te ayudará a reconocer esto como una gran oportunidad.
+
+Hola, estimad{o|a} [nombre]. {El|La} buen{a} abogad{o|a} que eres, deja ver que eres {el|la} mejor en tu área.
+
+daishxl@gmail.com
+dsmlhidroponia@gmail.com
+juansartoricoder@gmail.com
+
+2295300370
+2291744012
+2294778510`
+
 const PortapapelesModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null
-
-  //   const copyToClipboard = () => {
-  //     navigator.clipboard.writeText(data)
-  //     alert('¡Copiado al portapapeles!')
-  //   }
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
@@ -32,14 +42,8 @@ const PortapapelesModal = ({ isOpen, onClose, data }) => {
         <div className="p-6">
           <div className="relative group">
             <pre className="bg-black/50 border border-gray-800 p-4 rounded-xl text-gray-300 font-mono text-md overflow-y-auto max-h-100 whitespace-pre-wrap">
-              {data}
+              {MOCK_DATA_TEXT}
             </pre>
-            {/* <button
-              onClick={copyToClipboard}
-              className="absolute top-3 right-3 p-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-all shadow-lg flex items-center gap-2 text-xs font-bold"
-            >
-              <Copy size={14} /> COPIAR TODO
-            </button> */}
           </div>
           <p className="text-[10px] text-gray-500 mt-4 italic">
             * Estos datos son solo de referencia para pruebas rápidas.
