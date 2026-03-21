@@ -60,7 +60,7 @@ Este no es un proyecto de tutorial ni una plantilla genérica. Es una **herramie
 git clone https://github.com/SALVADORPOETA/Poder-judicial-frontend-sm.git
 
 # Navegar al directorio
-cd Poder-judicial-frontend-sm
+cd poder-judicial-frontend-sm
 
 # Instalar dependencias
 npm install
