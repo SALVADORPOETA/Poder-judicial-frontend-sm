@@ -98,7 +98,7 @@ La aplicación estará disponible en `http://localhost:5173`.
 ## 📂 Project Structure
 
 ```text
-pjf-frontend-sm/
+frontend/
 ├─ src/
 │  ├─ components/
 │  │  ├─ LinkScraper.jsx      # Fase 1: Extracción de URLs
