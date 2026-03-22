@@ -5,6 +5,7 @@
 The application is **fully interactive**: you can upload JSON files, edit templates in real-time with variable detection, and manage candidates through a modern, tactile interface that prioritizes operational efficiency.
 
 <img width="781" height="631" alt="pj-scraping" src="https://github.com/user-attachments/assets/6f7de6f2-c0b6-41a4-9ec5-bb9a21601ccc" />
+<img width="783" height="631" alt="pj-email" src="https://github.com/user-attachments/assets/d388602c-c039-4bfe-b122-869dd105d10c" />
 
 ---
 
