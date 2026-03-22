@@ -220,9 +220,16 @@ const Servicio2 = () => {
             <BackButton hoverColor="purple" />
           </div>
           <div className="flex-none text-center px-4">
-            <h1 className="text-4xl lg:text-5xl font-bold text-purple-400 tracking-tight mb-2">
-              Mensajería Masiva
-            </h1>
+            <div className="flex">
+              <h1 className="text-4xl lg:text-5xl font-bold text-purple-400 tracking-tight mb-2">
+                Mensajería Masiva
+              </h1>
+              <div className="flex-1 flex justify-center items-center ml-6">
+                <span className="hidden md:inline-block bg-purple-900/50 text-purple-200 px-3 py-1 rounded-full text-xs font-mono border border-purple-700">
+                  v2.0
+                </span>
+              </div>
+            </div>
             <p className="text-gray-500 text-xs md:text-sm">
               Configuración de plantillas y gestión de envíos
             </p>

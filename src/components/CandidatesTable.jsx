@@ -108,17 +108,23 @@ const CandidatesTable = ({
                     className="bg-transparent outline-none focus:ring-1 focus:ring-blue-500/50 rounded px-2 py-1 w-full text-sm text-blue-400 font-mono"
                   />
                 </td>
-
                 <td className="p-4 text-sm font-mono">
                   <div className="flex items-center gap-2">
                     <Phone size={12} className="text-gray-600 shrink-0" />
                     <input
-                      value={c.telefono || ''} // Directo y simple
+                      // Lógica: Si contiene letras o mensajes largos, mostramos vacío para que actúe el placeholder
+                      value={
+                        !c.telefono || /[a-zA-Z]/.test(c.telefono)
+                          ? ''
+                          : c.telefono
+                      }
                       onChange={(e) =>
                         handleEdit(c.id, 'telefono', e.target.value)
                       }
                       className={`bg-transparent outline-none focus:ring-1 focus:ring-green-500/50 rounded px-2 py-1 w-full text-sm transition-all truncate max-w-37.5 ${
-                        !c.telefono ? 'text-gray-600 italic' : 'text-gray-400'
+                        !c.telefono || /[a-zA-Z]/.test(c.telefono)
+                          ? 'text-gray-500 italic'
+                          : 'text-gray-400'
                       }`}
                       placeholder="Sin número"
                     />

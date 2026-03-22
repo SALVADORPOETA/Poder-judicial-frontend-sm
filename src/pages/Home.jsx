@@ -20,19 +20,19 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   const servicios = [
     {
       id: 1,
-      title: 'Servicio 1: Scraping',
+      title: 'Scraping PJ: URLs y Detalles',
       path: '/servicio-1',
       color: 'hover:border-blue-500 hover:text-blue-400',
     },
     {
       id: 2,
-      title: 'Servicio 2: Mensajería',
+      title: 'Mensajería Masiva: Email y WhatsApp',
       path: '/servicio-2',
       color: 'hover:border-purple-500 hover:text-purple-400',
     },
     {
       id: 3,
-      title: 'Servicio 3: Contactos',
+      title: 'Generador de VCF: Contactos para teléfono',
       path: '/servicio-3',
       color: 'hover:border-emerald-500 hover:text-emerald-400',
     },
@@ -94,13 +94,13 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
               <div
                 key={s.id}
                 onClick={() => navigate(s.path)}
-                className={`group bg-[#111] border border-gray-800 p-6 rounded-2xl flex items-center justify-between cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:bg-[#161616] ${s.color} hover:shadow-[0_0_20px_rgba(0,0,0,0.3)]`}
+                className={`group bg-[#111] border border-gray-800 py-6 pr-6 pl-12 rounded-2xl flex items-center justify-between cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:bg-[#161616] ${s.color} hover:shadow-[0_0_20px_rgba(0,0,0,0.3)]`}
               >
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 group-hover:bg-gray-700 transition-colors">
                     {s.id}
                   </div>
-                  <span className="text-lg font-medium transition-colors">
+                  <span className="text-lg font-medium transition-colors ml-10">
                     {s.title}
                   </span>
                 </div>

@@ -66,7 +66,7 @@ const MessageModal = ({
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <label className="text-[10px] text-gray-500 uppercase font-black tracking-widest">
-                Cuerpo del Mensaje
+                Cuerpo del Correo
               </label>
               <span className="text-[10px] text-gray-600 font-mono">
                 {(mensaje || '').length} caracteres

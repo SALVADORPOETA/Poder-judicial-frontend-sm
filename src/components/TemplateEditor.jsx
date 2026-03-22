@@ -60,7 +60,7 @@ const TemplateEditor = ({
       {envioMode === 'email' && (
         <div className="mb-6 animate-in fade-in slide-in-from-top-2">
           <label className="flex items-center gap-2 text-[10px] font-black mb-2 text-gray-500 uppercase tracking-widest">
-            Asunto del Mensaje
+            Asunto del {envioMode === 'email' ? 'correo' : 'mensaje'}
           </label>
           <input
             type="text"
@@ -81,7 +81,7 @@ const TemplateEditor = ({
       {/* Textarea */}
       <div className="mb-6">
         <label className="flex items-center gap-2 text-[10px] font-black mb-2 text-gray-500 uppercase tracking-widest">
-          Cuerpo del Mensaje
+          Cuerpo del {envioMode === 'email' ? 'correo' : 'mensaje'}
         </label>
         <textarea
           className={`w-full h-48 bg-black/40 border border-gray-700 rounded-xl p-4 outline-none ${focusColor} transition-all text-sm font-mono`}
