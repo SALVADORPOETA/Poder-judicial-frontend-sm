@@ -2,10 +2,12 @@
 
 **PJF Data & Messaging Suite** is an advanced automation and data management platform specifically designed for the **Federal Judiciary (Poder Judicial de la Federación)** ecosystem. This frontend project, built from scratch with **React 18** and **TailwindCSS**, allows users to perform deep scraping of judicial profiles, process databases with gender intelligence, and manage personalized messaging campaigns via Email and WhatsApp.
 
+<img width="781" height="631" alt="pj-scraping" src="https://github.com/user-attachments/assets/6f7de6f2-c0b6-41a4-9ec5-bb9a21601ccc" />
+
 The application is **fully interactive**: you can upload JSON files, edit templates in real-time with variable detection, and manage candidates through a modern, tactile interface that prioritizes operational efficiency.
 
-<img width="781" height="631" alt="pj-scraping" src="https://github.com/user-attachments/assets/6f7de6f2-c0b6-41a4-9ec5-bb9a21601ccc" />
 <img width="783" height="631" alt="pj-email" src="https://github.com/user-attachments/assets/d388602c-c039-4bfe-b122-869dd105d10c" />
+<img width="783" height="631" alt="pj-whatsapp" src="https://github.com/user-attachments/assets/af12ebb5-21ee-406f-b0ce-0116da97db59" />
 
 ---
 
