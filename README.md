@@ -18,7 +18,7 @@ This is not a tutorial project or a generic template. It is a **custom data engi
 * **Robust Data Architecture:** Blob handling for Excel and JSON export without loss of integrity.
 * **High-Precision UI/UX:** Dark mode design inspired by developer tools, optimized for long work sessions.
 
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/712dfa00-8a58-40ec-a393-4f428d8c50f3" />
+<img width="783" height="633" alt="pj-email" src="https://github.com/user-attachments/assets/f22b68c3-24e7-4460-b69c-c6d3c549de5e" />
 
 <img width="767" height="631" alt="pj-email-1" src="https://github.com/user-attachments/assets/054b4d8f-7aa1-42e6-9bcc-58542acb0d17" />
 
