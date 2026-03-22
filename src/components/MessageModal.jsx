@@ -85,7 +85,7 @@ const MessageModal = ({
             <p className="text-[11px] text-amber-500/80 leading-snug">
               Nota: Este mensaje se enviará al correo:{' '}
               <span className="text-amber-200 font-mono">
-                {candidato.correo || 'Sin correo'}
+                {candidato.email || 'Sin correo'}
               </span>
             </p>
           </div>
