@@ -80,11 +80,22 @@ npm install
 
 ### Environment Variables
 
-Create a `.env` file in the root directory with your API URL:
+Create a `.env.development` file in the root directory with your API URL:
 ```env
 VITE_APP_PASSWORD=[Password]
 
 VITE_MODO_HIBRIDO=false
+
+VITE_API_LOCAL=http://localhost:3001
+VITE_API_NGROK=https://your-link.ngrok-free.dev
+VITE_API_PROD=https://your-link.vercel.app
+```
+
+Create a `.env.production` file in the root directory with your API URL:
+```env
+VITE_APP_PASSWORD=[Password]
+
+VITE_MODO_HIBRIDO=true
 
 VITE_API_LOCAL=http://localhost:3001
 VITE_API_NGROK=https://your-link.ngrok-free.dev
