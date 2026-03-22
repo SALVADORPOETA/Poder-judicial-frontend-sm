@@ -24,7 +24,7 @@ This is not a tutorial project or a generic template. It is a **custom data engi
 
 <img width="777" height="631" alt="pj-whatsapp" src="https://github.com/user-attachments/assets/dccb58e5-be38-4140-9f33-ce27732923cd" />
 
-<img width="775" height="631" alt="pj-whatsapp-1" src="https://github.com/user-attachments/assets/883be3c6-8ae5-4ccf-bc09-3e5b0a7a85c3" />
+<img width="767" height="631" alt="pj-whatsapp-1" src="https://github.com/user-attachments/assets/f3a6d7b8-0aa8-4707-8b85-d7a20ed1fe73" />
 
 ---
 
