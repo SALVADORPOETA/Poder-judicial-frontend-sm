@@ -20,7 +20,7 @@ This is not a tutorial project or a generic template. It is a **custom data engi
 
 <img width="783" height="633" alt="pj-email" src="https://github.com/user-attachments/assets/f22b68c3-24e7-4460-b69c-c6d3c549de5e" />
 
-<img width="767" height="631" alt="pj-email-1" src="https://github.com/user-attachments/assets/054b4d8f-7aa1-42e6-9bcc-58542acb0d17" />
+<img width="765" height="633" alt="pj-email-1" src="https://github.com/user-attachments/assets/da0409ad-1657-4ba8-8513-4a5e4016263b" />
 
 <img width="783" height="629" alt="pj-whatsapp" src="https://github.com/user-attachments/assets/49420196-200e-4c5e-86f0-3cabb3c2f782" />
 
