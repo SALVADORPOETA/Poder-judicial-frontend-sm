@@ -26,7 +26,7 @@ function Servicio1() {
           <div className="flex-1 flex justify-start items-start">
             {/* Usamos justify-start para que el badge se pegue al borde izquierdo de esta celda (que es el lado del título) */}
             <span className="hidden md:inline-block bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-xs font-mono border border-blue-700 mt-2 -translate-y-3 translate-x-20">
-              v2.1
+              v2.0
             </span>
           </div>
         </header>
