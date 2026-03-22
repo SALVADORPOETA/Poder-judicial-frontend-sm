@@ -18,13 +18,15 @@ This is not a tutorial project or a generic template. It is a **custom data engi
 * **Robust Data Architecture:** Blob handling for Excel and JSON export without loss of integrity.
 * **High-Precision UI/UX:** Dark mode design inspired by developer tools, optimized for long work sessions.
 
-<img width="783" height="631" alt="pj-email" src="https://github.com/user-attachments/assets/d388602c-c039-4bfe-b122-869dd105d10c" />
+<img width="783" height="633" alt="pj-email" src="https://github.com/user-attachments/assets/f22b68c3-24e7-4460-b69c-c6d3c549de5e" />
 
-<img width="771" height="631" alt="pj-email-1" src="https://github.com/user-attachments/assets/f35fd897-f7ea-41da-bb9d-10d0a61a8e09" />
+<img width="765" height="633" alt="pj-email-1" src="https://github.com/user-attachments/assets/da0409ad-1657-4ba8-8513-4a5e4016263b" />
 
-<img width="783" height="629" alt="pj-whatsapp" src="https://github.com/user-attachments/assets/49420196-200e-4c5e-86f0-3cabb3c2f782" />
+<img width="777" height="631" alt="pj-whatsapp" src="https://github.com/user-attachments/assets/dccb58e5-be38-4140-9f33-ce27732923cd" />
 
-<img width="775" height="631" alt="pj-whatsapp-1" src="https://github.com/user-attachments/assets/883be3c6-8ae5-4ccf-bc09-3e5b0a7a85c3" />
+<img width="767" height="631" alt="pj-whatsapp-1" src="https://github.com/user-attachments/assets/f3a6d7b8-0aa8-4707-8b85-d7a20ed1fe73" />
+
+<img width="781" height="629" alt="pj-generadorvcf" src="https://github.com/user-attachments/assets/967bd207-268b-44b5-8359-135c30ffa6ec" />
 
 ---
 
