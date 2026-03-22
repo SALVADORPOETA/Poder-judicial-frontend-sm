@@ -335,6 +335,7 @@ const Servicio2 = () => {
             file={file}
             onFileChange={handleFileChange}
             color="purple"
+            description="El sistema procesará nombres y géneros automáticamente al subir."
           />
         </div>
 

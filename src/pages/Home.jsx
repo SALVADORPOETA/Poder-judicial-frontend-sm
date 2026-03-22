@@ -30,12 +30,12 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
       path: '/servicio-2',
       color: 'hover:border-purple-500 hover:text-purple-400',
     },
-    // {
-    //   id: 3,
-    //   title: 'Servicio 3: Reportes',
-    //   path: '/servicio-3',
-    //   color: 'hover:border-green-500 hover:text-green-400',
-    // },
+    {
+      id: 3,
+      title: 'Servicio 3: Contactos',
+      path: '/servicio-3',
+      color: 'hover:border-emerald-500 hover:text-emerald-400',
+    },
     // {
     //   id: 4,
     //   title: 'Servicio 4: Base de Datos',

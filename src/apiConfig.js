@@ -1,21 +1,17 @@
 // src/apiConfig.js
-
 const getApiUrl = () => {
-  const modoHibrido = import.meta.env.VITE_MODO_HIBRIDO === 'true'
+  const isHibrido = import.meta.env.VITE_MODO_HIBRIDO === 'true'
   const isProd = import.meta.env.MODE === 'production'
 
-  // 1. Si activaste el modo híbrido en el .env, usa Ngrok
-  if (modoHibrido) {
-    return import.meta.env.VITE_API_NGROK
-  }
+  // Si es producción (Vercel) y el switch está en true -> NGROK
+  if (isProd && isHibrido) return import.meta.env.VITE_API_NGROK
 
-  // 2. Si estás en producción real (backend y frontend en la nube)
-  if (isProd) {
-    return import.meta.env.VITE_API_PROD
-  }
+  // Si es producción pero el switch está en false -> VERCEL BACKEND
+  if (isProd && !isHibrido) return import.meta.env.VITE_API_PROD
 
-  // 3. Por defecto, si estás programando normal en tu PC
-  return import.meta.env.VITE_API_LOCAL
+  // Por defecto (Desarrollo) -> LOCALHOST
+  return import.meta.env.VITE_API_LOCAL || 'http://localhost:3001'
 }
 
 export const API_URL = getApiUrl()
+console.log(`🚀 Conectado a API en modo ${import.meta.env.MODE}: ${API_URL}`)

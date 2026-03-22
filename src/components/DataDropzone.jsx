@@ -1,7 +1,12 @@
 import React from 'react'
 import { FileJson, CheckCircle } from 'lucide-react'
 
-const DataDropzone = ({ file, onFileChange, color = 'purple' }) => {
+const DataDropzone = ({
+  file,
+  onFileChange,
+  color = 'purple',
+  description = 'El sistema procesará los datos automáticamente al subir.',
+}) => {
   // Mapeo de colores para las clases de Tailwind
   const colorClasses = {
     purple: {
@@ -13,6 +18,11 @@ const DataDropzone = ({ file, onFileChange, color = 'purple' }) => {
       border: 'hover:border-blue-500',
       text: 'text-blue-400',
       bg: 'text-blue-300',
+    },
+    green: {
+      border: 'hover:border-emerald-500',
+      text: 'text-emerald-400',
+      bg: 'text-emerald-300',
     },
   }
   const theme = colorClasses[color] || colorClasses.purple
@@ -55,9 +65,7 @@ const DataDropzone = ({ file, onFileChange, color = 'purple' }) => {
         </div>
       </div>
 
-      <p className="text-[10px] text-center text-gray-600">
-        El sistema procesará nombres y géneros automáticamente al subir.
-      </p>
+      <p className="text-[12px] text-center text-gray-600">{description}</p>
     </div>
   )
 }

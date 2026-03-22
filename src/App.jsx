@@ -10,6 +10,7 @@ import {
 import Home from './pages/Home'
 import Servicio1 from './pages/Servicio1'
 import Servicio2 from './pages/Servicio2'
+import Servicio3 from './pages/Servicio3'
 
 // Componente Placeholder para rutas no desarrolladas aún
 const EnConstruccion = () => (
@@ -61,7 +62,7 @@ function App() {
           />
           <Route
             path="/servicio-3"
-            element={isAuthenticated ? <EnConstruccion /> : <Navigate to="/" />}
+            element={isAuthenticated ? <Servicio3 /> : <Navigate to="/" />}
           />
           <Route
             path="/servicio-4"
