@@ -19,7 +19,7 @@ This is not a tutorial project or a generic template. It is a **custom data engi
 * **High-Precision UI/UX:** Dark mode design inspired by developer tools, optimized for long work sessions.
 
 <img width="783" height="631" alt="pj-email" src="https://github.com/user-attachments/assets/d388602c-c039-4bfe-b122-869dd105d10c" />
-<img width="783" height="631" alt="pj-whatsapp" src="https://github.com/user-attachments/assets/af12ebb5-21ee-406f-b0ce-0116da97db59" />
+<img width="783" height="629" alt="pj-whatsapp" src="https://github.com/user-attachments/assets/49420196-200e-4c5e-86f0-3cabb3c2f782" />
 
 ---
 
