@@ -5,9 +5,12 @@ import { API_URL } from '../apiConfig'
 const LinkScraper = () => {
   const LISTAS_OPCIONES = [
     { id: '1', nombre: '1. Ministras y Ministros SCJN' },
-    { id: '2', nombre: '2. Magistradas y Magistrados Sala Superior TEPJF' },
-    { id: '3', nombre: '3. Magistradas y Magistrados Salas Regionales TEPJF' },
-    { id: '4', nombre: '4. Magistradas y Magistrados Tribunal de Disciplina' },
+    {
+      id: '2',
+      nombre: '2. Magistradas y Magistrados Tribunal de Disciplina',
+    },
+    { id: '3', nombre: '3. Magistradas y Magistrados Sala Superior TEPJF' },
+    { id: '4', nombre: '4. Magistradas y Magistrados Salas Regionales TEPJF' },
     { id: '5', nombre: '5. Magistradas y Magistrados de Circuito' },
     { id: '6', nombre: '6. Juezas y Jueces de Distrito' },
   ]
