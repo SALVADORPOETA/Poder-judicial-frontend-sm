@@ -187,7 +187,3 @@ All rights reserved to the author.
 
 * Designed to optimize workflows within the Federal Judiciary.
 * The frontend demonstrates advanced skills in managing complex states and designing UI for productivity tools.
-
----
-
-**Would you like me to help you translate the Backend README as well, or should we move on to the next feature of the app?**
