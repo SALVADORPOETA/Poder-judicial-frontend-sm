@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import Servicio1 from './pages/Servicio1'
 import Servicio2 from './pages/Servicio2'
 import Servicio3 from './pages/Servicio3'
+import ProtectedRoute from './components/ProtectedRoute'
 
 // Componente Placeholder para rutas no desarrolladas aún
 const EnConstruccion = () => (
@@ -38,7 +39,6 @@ function App() {
     <Router>
       <div className="min-h-screen bg-[#0a0a0a]">
         <Routes>
-          {/* Ruta principal: Home y Login */}
           <Route
             path="/"
             element={
@@ -49,32 +49,50 @@ function App() {
             }
           />
 
-          {/* Ruta Servicio 1: PJ Scraper (Protegida) */}
+          {/* Usa ProtectedRoute directamente, él ya sabe qué hacer */}
           <Route
             path="/servicio-1"
-            element={isAuthenticated ? <Servicio1 /> : <Navigate to="/" />}
+            element={
+              <ProtectedRoute>
+                <Servicio1 />
+              </ProtectedRoute>
+            }
           />
-
-          {/* Rutas para los demás servicios (Protegidas) */}
           <Route
             path="/servicio-2"
-            element={isAuthenticated ? <Servicio2 /> : <Navigate to="/" />}
+            element={
+              <ProtectedRoute>
+                <Servicio2 />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/servicio-3"
-            element={isAuthenticated ? <Servicio3 /> : <Navigate to="/" />}
+            element={
+              <ProtectedRoute>
+                <Servicio3 />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/servicio-4"
-            element={isAuthenticated ? <EnConstruccion /> : <Navigate to="/" />}
+            element={
+              <ProtectedRoute>
+                <EnConstruccion />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/servicio-5"
-            element={isAuthenticated ? <EnConstruccion /> : <Navigate to="/" />}
+            element={
+              <ProtectedRoute>
+                <EnConstruccion />
+              </ProtectedRoute>
+            }
           />
 
-          {/* Redirección por defecto si la ruta no existe */}
-          <Route path="*" element={<Navigate to="/" />} />
+          {/* Redirección global */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>
