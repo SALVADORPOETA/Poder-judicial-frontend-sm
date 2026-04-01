@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Opcional: Si tienes un sitemap, pon la URL aquí
+# Sitemap: https://tu-dominio.vercel.app/sitemap.xml
