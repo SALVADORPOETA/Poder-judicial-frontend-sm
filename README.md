@@ -26,7 +26,7 @@ This is not a tutorial project or a generic template. It is a **custom data engi
 
 <img width="767" height="631" alt="pj-whatsapp-1" src="https://github.com/user-attachments/assets/f3a6d7b8-0aa8-4707-8b85-d7a20ed1fe73" />
 
-<img width="781" height="629" alt="pj-generadorvcf" src="https://github.com/user-attachments/assets/967bd207-268b-44b5-8359-135c30ffa6ec" />
+<img width="777" height="629" alt="pj-generadorvcf" src="https://github.com/user-attachments/assets/880766f9-ed6c-4b28-bacc-7916f452b561" />
 
 ---
 
