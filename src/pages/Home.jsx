@@ -17,6 +17,12 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
     }
   }
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('isAuth')
+    setIsAuthenticated(false)
+    navigate('/')
+  }
+
   const servicios = [
     {
       id: 1,
@@ -65,7 +71,17 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
           </h1>
           <form onSubmit={handleLogin} className="space-y-4">
             <input
+              type="text"
+              name="username"
+              defaultValue="admin"
+              autoComplete="username"
+              className="hidden"
+              style={{ display: 'none' }}
+            />
+            <input
               type="password"
+              name="password"
+              autoComplete="current-password"
               placeholder="Introduce la contraseña"
               className="w-full bg-black/50 border border-gray-700 rounded-xl p-4 outline-none focus:border-purple-500 transition-all text-center"
               value={password}
@@ -109,6 +125,14 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
             ))}
           </div>
         </div>
+      )}
+      {isAuthenticated && (
+        <button
+          className="bg-gray-800! mt-6 transition-all! duration-300! hover:scale-[1.03]"
+          onClick={handleLogout}
+        >
+          Salir
+        </button>
       )}
     </main>
   )
