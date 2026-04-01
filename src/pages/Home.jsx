@@ -51,7 +51,7 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   ]
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-6">
+    <main className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-6">
       {!isAuthenticated ? (
         /* VISTA: LOGIN */
         <div className="w-full max-w-md bg-gray-900/50 border border-gray-800 p-8 rounded-2xl shadow-2xl animate-in fade-in duration-500">
@@ -110,7 +110,7 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
           </div>
         </div>
       )}
-    </div>
+    </main>
   )
 }
 
